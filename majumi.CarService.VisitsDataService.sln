@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Rest", "majumi.CarService.VisitsDataService\majumi.CarService.VisitsDataService.Rest.csproj", "{859D57D4-F4A6-4597-A25B-99CCD20D4930}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Logic", "majumi.CarService.VisitsDataService.Logic\majumi.CarService.VisitsDataService.Logic.csproj", "{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Model", "majumi.CarService.VisitsDataService.Model\majumi.CarService.VisitsDataService.Model.csproj", "{787DDDE9-7757-4696-A328-42BE1FD3D2E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Rest.Model", "majumi.CarService.VisitsDataService.Rest.Model\majumi.CarService.VisitsDataService.Rest.Model.csproj", "{03517070-2593-4D82-8178-72754533219E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Rest.Tests", "majumi.CarService.VisitsDataService.Rest.Tests\majumi.CarService.VisitsDataService.Rest.Tests.csproj", "{8397A369-0E82-4B23-9C17-C9607C856FA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{859D57D4-F4A6-4597-A25B-99CCD20D4930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859D57D4-F4A6-4597-A25B-99CCD20D4930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859D57D4-F4A6-4597-A25B-99CCD20D4930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859D57D4-F4A6-4597-A25B-99CCD20D4930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787DDDE9-7757-4696-A328-42BE1FD3D2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787DDDE9-7757-4696-A328-42BE1FD3D2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787DDDE9-7757-4696-A328-42BE1FD3D2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787DDDE9-7757-4696-A328-42BE1FD3D2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03517070-2593-4D82-8178-72754533219E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03517070-2593-4D82-8178-72754533219E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03517070-2593-4D82-8178-72754533219E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03517070-2593-4D82-8178-72754533219E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8397A369-0E82-4B23-9C17-C9607C856FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8397A369-0E82-4B23-9C17-C9607C856FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8397A369-0E82-4B23-9C17-C9607C856FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8397A369-0E82-4B23-9C17-C9607C856FA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFEE4E30-23A9-42C0-ABBE-35AB3C46A8BA}
+	EndGlobalSection
+EndGlobal

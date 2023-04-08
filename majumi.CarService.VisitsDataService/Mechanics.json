@@ -1,0 +1,62 @@
+[
+  {
+    "MechanicID": 1,
+    "Name": "Tomasz",
+    "Surname": "Turbo",
+    "BirthDate": "1985-03-12T00:00:00",
+    "HireDate": "2007-06-01T00:00:00",
+    "Specialty": "Regeneracja hamulcow",
+    "VacationDays": 20,
+    "Address": "ul. Zlota 1, Warszawa, 00-001",
+    "Phone": "+48 22 123 45 67",
+    "Email": "turbo.tomasz.85@autorepair.pl"
+  },
+  {
+    "MechanicID": 2,
+    "Name": "Maksymilian",
+    "Surname": "Miesien",
+    "BirthDate": "1990-09-19T00:00:00",
+    "HireDate": "2015-04-15T00:00:00",
+    "Specialty": "Specjalista od zawieszenia",
+    "VacationDays": 15,
+    "Address": "ul. Piekna 2, Krakow, 31-231",
+    "Phone": "+48 12 234 56 78",
+    "Email": "miesien.maksymilian.90@autorepair.pl"
+  },
+  {
+    "MechanicID": 3,
+    "Name": "Lucja",
+    "Surname": "Zaplon",
+    "BirthDate": "1987-05-08T00:00:00",
+    "HireDate": "2010-10-20T00:00:00",
+    "Specialty": "Naprawa elektroniki",
+    "VacationDays": 18,
+    "Address": "ul. Mokotowska 3, Warszawa, 00-001",
+    "Phone": "+48 22 345 67 89",
+    "Email": "zaplon.lucja.87@autorepair.pl"
+  },
+  {
+    "MechanicID": 4,
+    "Name": "Robert",
+    "Surname": "Droga",
+    "BirthDate": "1982-12-01T00:00:00",
+    "HireDate": "2005-08-10T00:00:00",
+    "Specialty": "Wymiana opon",
+    "VacationDays": 12,
+    "Address": "ul. G��wna 4, Katowice, 40-001",
+    "Phone": "+48 32 456 78 90",
+    "Email": "droga.robert.82@autorepair.pl"
+  },
+  {
+    "MechanicID": 5,
+    "Name": "Jesika",
+    "Surname": "Klucz",
+    "BirthDate": "1992-08-15",
+    "HireDate": "2017-01-05",
+    "Specialty": "Naprawa silnika",
+    "VacationDays": 16,
+    "Address": "ul. Piotrkowska 5, Lodz, 90-001",
+    "Phone": "+48 42 567 89 01",
+    "Email": "klucz.jesika.92@autorepair.pl"
+  }
+]

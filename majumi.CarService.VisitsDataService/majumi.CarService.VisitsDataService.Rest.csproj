@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>03ca04ce-d2f5-43d3-a34b-3b6a3098c32a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\majumi.CarService.VisitsDataService.Rest.Model\majumi.CarService.VisitsDataService.Rest.Model.csproj" />
+    <ProjectReference Include="..\majumi.CarService.VisitsDataService.Logic\majumi.CarService.VisitsDataService.Logic.csproj" />
+    <ProjectReference Include="..\majumi.CarService.VisitsDataService.Model\majumi.CarService.VisitsDataService.Model.csproj" />
+    <ProjectReference Include="..\majumi.CarService.VisitsDataService.Rest.Tests\majumi.CarService.VisitsDataService.Rest.Tests.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+
+</Project>
