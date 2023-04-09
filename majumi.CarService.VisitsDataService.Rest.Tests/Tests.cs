@@ -18,12 +18,12 @@ public class Tests : ITestsService
 
         try
         {
-            IMechanicCollection mechanicCollection = new MechanicCollection();
+            IVisitCollection visitCollection = new VisitCollection();
 
-            Mechanic[] mechanics1 = mechanicCollection.GetAllMechanics();
-            MechanicData[] mechanics2 = GetMechanics(host, (ushort)port);
+            Visit[] visits1 = visitCollection.GetAllVisits();
+            VisitData[] visits2 = GetVisits(host, (ushort)port);
 
-            Debug.Assert(condition: mechanics1.Length == mechanics2.Length);
+            Debug.Assert(condition: visits1.Length == visits2.Length);
         }
         catch (Exception e)
         {
@@ -32,9 +32,9 @@ public class Tests : ITestsService
         return "No errors";
     }
 
-    private MechanicData[] GetMechanics(string webServiceHost, ushort webServicePort)
+    private VisitData[] GetVisits(string webServiceHost, ushort webServicePort)
     {
-        string webServiceUri = string.Format("https://{0}:{1}/allMechanics", webServiceHost, webServicePort);
+        string webServiceUri = string.Format("https://{0}:{1}/allVisits", webServiceHost, webServicePort);
 
         Task<string> webServiceCall = CallWebService(HttpMethod.Get, webServiceUri);
 
@@ -42,9 +42,9 @@ public class Tests : ITestsService
 
         string jsonResponseContent = webServiceCall.Result;
 
-        MechanicData[] mechanics = ConvertJson(jsonResponseContent);
+        VisitData[] visits = ConvertJson(jsonResponseContent);
 
-        return mechanics;
+        return visits;
     }
 
     public static async Task<string> CallWebService(HttpMethod httpMethod, string webServiceUri)
@@ -62,11 +62,11 @@ public class Tests : ITestsService
         return httpResponseContent;
     }
 
-    public MechanicData[] ConvertJson(string json)
+    public VisitData[] ConvertJson(string json)
     {
-        MechanicData[] mechanics = JsonSerializer.Deserialize<MechanicData[]>(json);
+        VisitData[] visits = JsonSerializer.Deserialize<VisitData[]>(json);
 
-        return mechanics;
+        return visits;
     }
 }
 

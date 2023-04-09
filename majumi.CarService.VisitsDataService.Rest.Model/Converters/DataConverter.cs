@@ -5,20 +5,22 @@ namespace majumi.CarService.VisitsDataService.Rest.Model.Converters;
 
 public static class DataConverter
 {
-    public static MechanicData ConvertToMechanicData(this Mechanic mechanic)
+    public static VisitData ConvertToVisitData(this Visit visit)
     {
-        return new MechanicData
+        return new VisitData
         {
-            MechanicID = mechanic.MechanicID,
-            Name = mechanic.Name,
-            Surname = mechanic.Surname,
-            BirthDate = mechanic.BirthDate,
-            HireDate = mechanic.HireDate,
-            Specialty = mechanic.Specialty,
-            VacationDays = mechanic.VacationDays,
-            Address = mechanic.Address,
-            Phone = mechanic.Phone,
-            Email = mechanic.Email
+             VisitID = visit.VisitID,
+             ClientID = visit.ClientID,
+             ServiceType = visit.ServiceType,
+             ServiceDate = visit.ServiceDate,
+             ServiceTime = visit.ServiceTime,
+             ServiceLocation = visit.ServiceLocation,
+             ServiceCost = visit.ServiceCost,
+             ServiceStatus = visit.ServiceStatus,
+             Notes = visit.Notes,
+             Rating = visit.Rating,
+             MechanicID = visit.MechanicID,
+             CarID = visit.CarID
         };
     }
 }
