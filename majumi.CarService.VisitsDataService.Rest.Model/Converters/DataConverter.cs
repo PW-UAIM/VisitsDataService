@@ -13,12 +13,9 @@ public static class DataConverter
              ClientID = visit.ClientID,
              ServiceType = visit.ServiceType,
              ServiceDate = visit.ServiceDate,
-             ServiceTime = visit.ServiceTime,
-             ServiceLocation = visit.ServiceLocation,
              ServiceCost = visit.ServiceCost,
              ServiceStatus = visit.ServiceStatus,
              Notes = visit.Notes,
-             Rating = visit.Rating,
              MechanicID = visit.MechanicID,
              CarID = visit.CarID
         };

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "majumi.CarService.VisitsDataService.Rest.Model": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62972;http://localhost:62972"
+    }
+  }
+}

@@ -23,16 +23,44 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
 
     [HttpGet]
     [Route("/visit/{id:int}")]
-    public Visit GetVisit(int id)
+    public Visit GetVisitById(int id)
     {
-        return visitCollection.GetById(id);
+        return visitCollection.GetVisitById(id);
     }
 
     [HttpGet]
-    [Route("/allVisits")]
+    [Route("/visit/client/{id:int}")]
+    public Visit[] GetVisitByClient(int id)
+    {
+        return visitCollection.GetVisitsByClient(id);
+    }
+
+    [HttpGet]
+    [Route("/visit/mechanic/{id:int}")]
+    public Visit[] GetVisitByMechanic(int id)
+    {
+        return visitCollection.GetVisitsByMechanic(id);
+    }
+
+    [HttpGet]
+    [Route("/visit/all")]
     public Visit[] GetAllVisits()
     {
         return visitCollection.GetAllVisits();
+    }
+
+    [HttpGet]
+    [Route("/visit/mechanic/{id:int}/date/{year:int}/{month:int}/{day:int}")]
+    public Visit[] GetVisitByMechanicAndDate(int id, int year, int month, int day)
+    {
+        return visitCollection.GetVisitsByMechanicAndDate(id, year, month, day);
+    }
+
+    [HttpPatch]
+    [Route("/visit/{id:int}/update/{status}")]
+    public Visit UpdateVisitStatus(int id, string status)
+    {
+        return visitCollection.UpdateVisitStatus(id, status);
     }
 
     [HttpGet]
