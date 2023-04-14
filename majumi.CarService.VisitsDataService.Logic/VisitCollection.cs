@@ -57,7 +57,17 @@ public class VisitCollection : IVisitCollection
     {
         lock (VisitLock)
         {
-            Visits.Find(visit => visit.VisitID == id).ServiceStatus = status;
+            Console.Write("test");
+            foreach(Visit visit in Visits) {
+                Console.Write(visit.VisitID);
+                if(visit.VisitID == id) {
+                    Console.Write("changeStatus");
+                    visit.ServiceStatus = status;
+                    Console.Write("new");
+                    Console.Write(visit.ServiceStatus);
+                }
+
+            }
             return Visits.Find(visit => visit.VisitID == id);
         }
     }
