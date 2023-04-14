@@ -13,8 +13,8 @@ CALL:curl_test "Zmien status wizyty o ID 1 na 'Trwa' " GET /visit/1/update/Trwa
 
 CALL:curl_test "Dane wizyty o ID 1" GET /visit/1 
 
-echo Nazwa testu: "Dodaj wizyte o ID 20""
-echo Testowany url: %url%%~3
+echo Nazwa testu: "Dodaj wizyte o ID 20"
+echo Testowany url: https://localhost:5003/visit/add
 curl -X POST https://localhost:5003/visit/add -H "Content-Type: application/json"  -d ^
 "{^
 	\"visitID\": 20,^

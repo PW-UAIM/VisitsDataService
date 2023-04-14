@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Rest", "majumi.CarService.VisitsDataService\majumi.CarService.VisitsDataService.Rest.csproj", "{859D57D4-F4A6-4597-A25B-99CCD20D4930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Rest", "majumi.CarService.VisitsDataService.Rest\majumi.CarService.VisitsDataService.Rest.csproj", "{859D57D4-F4A6-4597-A25B-99CCD20D4930}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.VisitsDataService.Logic", "majumi.CarService.VisitsDataService.Logic\majumi.CarService.VisitsDataService.Logic.csproj", "{6B5AAE8C-B375-4FBC-B036-7B913FA4399A}"
 EndProject
