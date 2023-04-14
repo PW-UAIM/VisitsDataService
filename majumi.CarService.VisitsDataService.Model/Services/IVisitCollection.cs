@@ -1,6 +1,4 @@
-﻿using majumi.CarService.VisitsDataService.Model;
-
-namespace majumi.CarService.VisitsDataService.Model.Services;
+﻿namespace majumi.CarService.VisitsDataService.Model.Services;
 
 public interface IVisitCollection
 {

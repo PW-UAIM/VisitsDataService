@@ -37,7 +37,7 @@ public class Startup
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "majumi.CarService.MechanicsDataService v1"));
+            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "majumi.CarService.VisitsDataService v1"));
         }
         /* AT
         app.UseHttpsRedirection( );
