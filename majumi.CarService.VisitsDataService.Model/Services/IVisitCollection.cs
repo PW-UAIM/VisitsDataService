@@ -10,5 +10,6 @@ public interface IVisitCollection
     public Visit[] GetVisitsByMechanic(int id);
     public Visit[] GetVisitsByMechanicAndDate(int id, int year, int month, int day);
     public Visit UpdateVisitStatus(int id, string status);
+    public bool AddVisit(Visit visit);
 }
 

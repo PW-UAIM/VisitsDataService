@@ -56,6 +56,13 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
         return visitCollection.GetVisitsByMechanicAndDate(id, year, month, day);
     }
 
+    [HttpPost]
+    [Route("/visit/add")]
+    public bool AddVisit(Visit visit)
+    {
+        return visitCollection.AddVisit(visit);
+    }
+
     [HttpPatch]
     [Route("/visit/{id:int}/update/{status}")]
     public Visit UpdateVisitStatus(int id, string status)

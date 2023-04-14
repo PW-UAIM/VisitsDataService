@@ -5,7 +5,7 @@ namespace majumi.CarService.VisitsDataService.Logic;
 
 public class VisitCollection : IVisitCollection
 {
-    private static readonly List<Visit> Visits;
+    private static List<Visit> Visits;
 
     private static readonly object VisitLock = new();
     static VisitCollection()
@@ -59,6 +59,16 @@ public class VisitCollection : IVisitCollection
         {
             Visits.Find(visit => visit.VisitID == id).ServiceStatus = status;
             return Visits.Find(visit => visit.VisitID == id);
+        }
+    }
+
+    public bool AddVisit(Visit visit)
+    {
+        lock(VisitLock)
+        {
+            int len = Visits.Count;
+            Visits.Add(visit);
+            return (Visits.Count > len);
         }
     }
 }
