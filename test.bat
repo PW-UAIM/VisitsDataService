@@ -31,7 +31,7 @@ curl -X POST https://localhost:5003/visit/add -H "Content-Type: application/json
 }"
 echo:
 echo:
-CALL:curl_test "Dane wizyty o ID 20 po dodaniu" GET /visit/20 
+CALL:curl_test "Dane wszystkich wizyty" GET /visit/all
 
 EXIT /B 0
 
