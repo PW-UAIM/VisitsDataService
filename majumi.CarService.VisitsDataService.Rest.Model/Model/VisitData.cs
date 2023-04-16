@@ -2,7 +2,7 @@
 
 public class VisitData
 {
-    public int VisitID { get; set; }
+    public int? VisitID { get; set; }
     public int ClientID { get; set; }
     public string ServiceType { get; set; }
     public DateTime ServiceDate { get; set; }

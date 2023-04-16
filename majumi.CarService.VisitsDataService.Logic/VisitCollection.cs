@@ -112,16 +112,8 @@ public class VisitCollection  : IVisitCollection
     {
         lock(VisitLock)
         {
-            Visit? exisitingVisit = FindByID(visit.VisitID);
-            if (exisitingVisit != null)
-                return null;
-
-            int lenBef = Visits.Count;
+            visit.VisitID = Visits.Count + 1;
             Visits.Add(visit);
-            int lenAft = Visits.Count;
-
-            if (lenBef >= lenAft)
-                return null;
             
             return visit;
         }
