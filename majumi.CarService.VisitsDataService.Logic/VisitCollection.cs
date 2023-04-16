@@ -1,9 +1,11 @@
 ﻿using majumi.CarService.VisitsDataService.Model;
 using majumi.CarService.VisitsDataService.Model.Services;
+using majumi.CarService.VisitsDataService.Rest.Model.Converters;
+using majumi.CarService.VisitsDataService.Rest.Model.Model;
 
 namespace majumi.CarService.VisitsDataService.Logic;
 
-public class VisitCollection : IVisitCollection
+public class VisitCollection  /*: IVisitCollection*/
 {
     private static List<Visit> Visits;
 
@@ -13,19 +15,40 @@ public class VisitCollection : IVisitCollection
         Visits = new List<Visit>(VisitCollectionReader.ReadFromJSON("Visits.json"));
     }
 
-    public Visit? GetVisitById(int searchedID)
+    private Visit? FindByID(int visitID)
     {
-        lock (VisitLock)
+        foreach (Visit visit in Visits)
         {
-            return Visits.Find(visit => visit.VisitID == searchedID);
+            if (visit.VisitID == visitID)
+            {
+                return visit;
+            }
         }
+
+        return null;
     }
 
-    public Visit[]? GetVisitsByClient(int clientID)
+    public Visit? GetVisitById(int visitID)
     {
         lock (VisitLock)
         {
-            return Visits.Where(visit => visit.ClientID == clientID).ToArray();
+            return this.FindByID(visitID);
+        }
+    }
+        
+    public List<Visit> GetVisitsByClient(int clientID)
+    {
+        lock (VisitLock)
+        {
+            List<Visit> visits = new();
+            foreach(Visit v in Visits)
+            {
+                if (v.ClientID == clientID)
+                {
+                    visits.Add(v);
+                }
+            }
+            return visits;
         }
     }
 
@@ -37,48 +60,70 @@ public class VisitCollection : IVisitCollection
         }
     }
 
-    public Visit[] GetVisitsByMechanic(int mechanicID)
+    public List<Visit> GetVisitsByMechanic(int mechanicID)
     {
         lock (VisitLock)
         {
-            return Visits.Where(visit => visit.MechanicID == mechanicID).ToArray();
-        }
-    }
-
-    public Visit[] GetVisitsByMechanicAndDate(int mechanicID, int year, int month, int day)
-    {
-        lock (VisitLock)
-        {
-            return Visits.Where(visit => (visit.MechanicID == mechanicID && visit.ServiceDate == new DateTime(year,month,day))).ToArray();
-        }
-    }
-
-    public Visit UpdateVisitStatus(int id, string status)
-    {
-        lock (VisitLock)
-        {
-            Console.Write("test");
-            foreach(Visit visit in Visits) {
-                Console.Write(visit.VisitID);
-                if(visit.VisitID == id) {
-                    Console.Write("changeStatus");
-                    visit.ServiceStatus = status;
-                    Console.Write("new");
-                    Console.Write(visit.ServiceStatus);
+            List<Visit> visits = new();
+            foreach (Visit v in Visits)
+            {
+                if (v.MechanicID == mechanicID)
+                {
+                    visits.Add(v);
                 }
-
             }
-            return Visits.Find(visit => visit.VisitID == id);
+            return visits;
         }
     }
 
-    public bool AddVisit(Visit visit)
+    public List<Visit> GetVisitsByMechanicAndDate(int mechanicID, int year, int month, int day)
+    {
+        lock (VisitLock)
+        {
+            List<Visit> visits = new();
+            foreach (Visit v in Visits)
+            {
+                if (v.MechanicID == mechanicID && v.ServiceDate == new DateTime(year, month, day))
+                {
+                    visits.Add(v);
+                }
+            }
+            return visits;
+        }
+    }
+
+    public Visit? UpdateVisitStatus(int visitID, string newStatus)
+    {
+        lock (VisitLock)
+        {
+            foreach (Visit visit in Visits)
+            {
+                if (visit.VisitID == visitID)
+                {
+                    visit.ServiceStatus = newStatus;
+                    return visit;
+                }
+            }
+            return null;
+        }
+    }
+
+    public VisitData? AddVisit(VisitData visitData)
     {
         lock(VisitLock)
         {
-            int len = Visits.Count;
-            Visits.Add(visit);
-            return (Visits.Count > len);
+            Visit? visit = FindByID(visitData.VisitID);
+            if (visit != null)
+                return null;
+
+            int lenBef = Visits.Count;
+            Visits.Add(DataConverter.ConvertToVisit(visitData));
+            int lenAft = Visits.Count;
+
+            if (lenBef >= lenAft)
+                return null;
+            
+            return visitData;
         }
     }
 }

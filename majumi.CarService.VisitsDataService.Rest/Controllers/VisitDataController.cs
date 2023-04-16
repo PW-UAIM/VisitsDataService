@@ -4,16 +4,18 @@ using majumi.CarService.VisitsDataService.Logic;
 using majumi.CarService.VisitsDataService.Model;
 using majumi.CarService.VisitsDataService.Model.Services;
 using majumi.CarService.VisitsDataService.Rest.Model.Services;
+using majumi.CarService.VisitsDataService.Rest.Model.Model;
+using majumi.CarService.VisitsDataService.Rest.Model.Converters;
 
 namespace majumi.CarService.VisitsDataService.Rest.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class VisitDataController : ControllerBase, IVisitDataService, ITestsService
+public class VisitDataController : ControllerBase, /*IVisitDataService,*/ ITestsService
 {
     private readonly ILogger<VisitDataController> _logger;
 
-    private readonly IVisitCollection visitCollection;
+    private readonly /*I*/VisitCollection visitCollection;
 
     public VisitDataController(ILogger<VisitDataController> logger)
     {
@@ -23,23 +25,34 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
 
     [HttpGet]
     [Route("/visit/{id:int}")]
-    public Visit GetVisitById(int id)
+    public ActionResult<VisitData> GetVisitById(int id)
     {
-        return visitCollection.GetVisitById(id);
+        Visit? visit = visitCollection.GetVisitById(id);
+        if (visit == null) 
+            return NotFound();
+            
+        VisitData visitData = DataConverter.ConvertToVisitData(visit);
+        return Ok(visitData);
     }
 
     [HttpGet]
     [Route("/visit/client/{id:int}")]
-    public Visit[] GetVisitByClient(int id)
+    public ActionResult<List<VisitData>> GetVisitByClient(int id)
     {
-        return visitCollection.GetVisitsByClient(id);
+        List<Visit>? visits = visitCollection.GetVisitsByClient(id);
+        List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
+
+        return Ok(visitData);
     }
 
     [HttpGet]
     [Route("/visit/mechanic/{id:int}")]
-    public Visit[] GetVisitByMechanic(int id)
+    public ActionResult<List<VisitData>> GetVisitByMechanic(int id)
     {
-        return visitCollection.GetVisitsByMechanic(id);
+        List<Visit>? visits = visitCollection.GetVisitsByMechanic(id);
+        List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
+
+        return Ok(visitData);
     }
 
     [HttpGet]
@@ -51,23 +64,36 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
 
     [HttpGet]
     [Route("/visit/mechanic/{id:int}/date/{year:int}/{month:int}/{day:int}")]
-    public Visit[] GetVisitByMechanicAndDate(int id, int year, int month, int day)
+    public ActionResult<List<VisitData>> GetVisitByMechanicAndDate(int id, int year, int month, int day)
     {
-        return visitCollection.GetVisitsByMechanicAndDate(id, year, month, day);
+        List<Visit>? visits = visitCollection.GetVisitsByMechanicAndDate(id, year, month, day);
+        List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
+
+        return Ok(visitData);
     }
 
     [HttpPost]
     [Route("/visit/add")]
-    public bool AddVisit(Visit visit)
+    public ActionResult AddVisit(VisitData visit)
     {
-        return visitCollection.AddVisit(visit);
+        VisitData? addedVisit = visitCollection.AddVisit(visit);
+        if (addedVisit == null)
+            return UnprocessableEntity();
+
+        return Created($"https://localhost:5003/visit/get/{visit.VisitID}", addedVisit);
     }
 
     [HttpPatch]
     [Route("/visit/{id:int}/update/{status}")]
-    public Visit UpdateVisitStatus(int id, string status)
+    public ActionResult<VisitData> UpdateVisitStatus(int id, string status)
     {
-        return visitCollection.UpdateVisitStatus(id, status);
+        Visit visit = visitCollection.UpdateVisitStatus(id, status);
+        if (visit == null)
+            return NotFound();
+        
+        VisitData visitData = DataConverter.ConvertToVisitData(visit);
+
+        return Ok(visitData);
     }
 
     [HttpGet]

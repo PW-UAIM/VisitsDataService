@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\majumi.CarService.VisitsDataService.Model\majumi.CarService.VisitsDataService.Model.csproj" />
+    <ProjectReference Include="..\majumi.CarService.VisitsDataService.Rest.Model\majumi.CarService.VisitsDataService.Rest.Model.csproj" />
   </ItemGroup>
 
 </Project>

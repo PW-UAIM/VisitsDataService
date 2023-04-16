@@ -1,5 +1,6 @@
 ﻿using majumi.CarService.VisitsDataService.Model;
 using majumi.CarService.VisitsDataService.Rest.Model.Model;
+using System.ComponentModel;
 
 namespace majumi.CarService.VisitsDataService.Rest.Model.Converters;
 
@@ -18,6 +19,34 @@ public static class DataConverter
              Notes = visit.Notes,
              MechanicID = visit.MechanicID,
              CarID = visit.CarID
+        };
+    }
+
+    public static List<VisitData> ConvertToVisitDataList(this List<Visit> visits)
+    {
+        List<VisitData> visitData = new();
+
+        foreach (Visit v in visits)
+        {
+            visitData.Add(ConvertToVisitData(v));
+        }
+
+        return visitData;
+    }
+
+    public static Visit ConvertToVisit(this VisitData visitData)
+    {
+        return new Visit
+        {
+            VisitID = visitData.VisitID,
+            ClientID = visitData.ClientID,
+            ServiceType = visitData.ServiceType,
+            ServiceDate = visitData.ServiceDate,
+            ServiceCost = visitData.ServiceCost,
+            ServiceStatus = visitData.ServiceStatus,
+            Notes = visitData.Notes,
+            MechanicID = visitData.MechanicID,
+            CarID = visitData.CarID
         };
     }
 }

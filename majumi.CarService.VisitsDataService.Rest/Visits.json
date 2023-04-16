@@ -51,7 +51,7 @@
     "ServiceCost": 200,
     "ServiceStatus": "zaplanowany",
     "Notes": "Klient zglosil slaby przeplyw powietrza z otworow wentylacyjnych.",
-    "MechanicID": 8,
+    "MechanicID": 1,
     "CarID": 9
   }
 ]
