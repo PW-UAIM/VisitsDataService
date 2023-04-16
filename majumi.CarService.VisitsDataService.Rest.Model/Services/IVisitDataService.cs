@@ -1,15 +1,16 @@
 ﻿using majumi.CarService.VisitsDataService.Model;
+using majumi.CarService.VisitsDataService.Rest.Model.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace majumi.CarService.VisitsDataService.Rest.Model.Services;
 
 public interface IVisitDataService
 {
-    public Visit GetVisitById(int id);
-    public Visit[] GetVisitByClient(int id);
-    public Visit[] GetVisitByMechanic(int mechanicID);
-    public Visit[] GetVisitByMechanicAndDate(int mechanicID, int year, int month, int day);
-    public Visit[] GetAllVisits();
-    public Visit UpdateVisitStatus(int id, string status);
-    public bool AddVisit(Visit visit);
-    public string RunTests(string host, int port);  
+    public ActionResult<VisitData> GetVisitById(int id);
+    public ActionResult<List<VisitData>> GetVisitByClient(int id);
+    public ActionResult<List<VisitData>> GetVisitByMechanic(int id);
+    public ActionResult<List<VisitData>> GetAllVisits();
+    public ActionResult<List<VisitData>> GetVisitByMechanicAndDate(int id, int year, int month, int day);
+    public ActionResult AddVisit(Visit visit);
+    public ActionResult<VisitData> UpdateVisitStatus(int id, string status);
 }

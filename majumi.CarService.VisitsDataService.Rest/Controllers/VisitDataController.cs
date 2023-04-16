@@ -11,11 +11,11 @@ namespace majumi.CarService.VisitsDataService.Rest.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class VisitDataController : ControllerBase, /*IVisitDataService,*/ ITestsService
+public class VisitDataController : ControllerBase, IVisitDataService, ITestsService
 {
     private readonly ILogger<VisitDataController> _logger;
 
-    private readonly /*I*/VisitCollection visitCollection;
+    private readonly IVisitCollection visitCollection;
 
     public VisitDataController(ILogger<VisitDataController> logger)
     {
@@ -57,9 +57,12 @@ public class VisitDataController : ControllerBase, /*IVisitDataService,*/ ITests
 
     [HttpGet]
     [Route("/visit/all")]
-    public Visit[] GetAllVisits()
+    public ActionResult<List<VisitData>> GetAllVisits()
     {
-        return visitCollection.GetAllVisits();
+        List<Visit> visits = visitCollection.GetAllVisits();
+        List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
+
+        return Ok(visitData);
     }
 
     [HttpGet]
@@ -74,9 +77,9 @@ public class VisitDataController : ControllerBase, /*IVisitDataService,*/ ITests
 
     [HttpPost]
     [Route("/visit/add")]
-    public ActionResult AddVisit(VisitData visit)
+    public ActionResult AddVisit(Visit visit)
     {
-        VisitData? addedVisit = visitCollection.AddVisit(visit);
+        Visit? addedVisit = visitCollection.AddVisit(visit);
         if (addedVisit == null)
             return UnprocessableEntity();
 
@@ -87,7 +90,7 @@ public class VisitDataController : ControllerBase, /*IVisitDataService,*/ ITests
     [Route("/visit/{id:int}/update/{status}")]
     public ActionResult<VisitData> UpdateVisitStatus(int id, string status)
     {
-        Visit visit = visitCollection.UpdateVisitStatus(id, status);
+        Visit? visit = visitCollection.UpdateVisitStatus(id, status);
         if (visit == null)
             return NotFound();
         

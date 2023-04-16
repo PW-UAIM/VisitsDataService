@@ -5,7 +5,7 @@ using majumi.CarService.VisitsDataService.Rest.Model.Model;
 
 namespace majumi.CarService.VisitsDataService.Logic;
 
-public class VisitCollection  /*: IVisitCollection*/
+public class VisitCollection  : IVisitCollection
 {
     private static List<Visit> Visits;
 
@@ -52,11 +52,11 @@ public class VisitCollection  /*: IVisitCollection*/
         }
     }
 
-    public Visit[] GetAllVisits()
+    public List<Visit> GetAllVisits()
     {
         lock (VisitLock)
         {
-            return Visits.ToArray();
+            return Visits;
         }
     }
 
@@ -108,22 +108,22 @@ public class VisitCollection  /*: IVisitCollection*/
         }
     }
 
-    public VisitData? AddVisit(VisitData visitData)
+    public Visit? AddVisit(Visit visit)
     {
         lock(VisitLock)
         {
-            Visit? visit = FindByID(visitData.VisitID);
-            if (visit != null)
+            Visit? exisitingVisit = FindByID(visit.VisitID);
+            if (exisitingVisit != null)
                 return null;
 
             int lenBef = Visits.Count;
-            Visits.Add(DataConverter.ConvertToVisit(visitData));
+            Visits.Add(visit);
             int lenAft = Visits.Count;
 
             if (lenBef >= lenAft)
                 return null;
             
-            return visitData;
+            return visit;
         }
     }
 }
