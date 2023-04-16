@@ -77,13 +77,14 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
 
     [HttpPost]
     [Route("/visit/add")]
-    public ActionResult AddVisit(Visit visit)
+    public ActionResult<VisitData> AddVisit(Visit visit)
     {
         Visit? addedVisit = visitCollection.AddVisit(visit);
         if (addedVisit == null)
             return UnprocessableEntity();
+        VisitData visitData = DataConverter.ConvertToVisitData(addedVisit);
 
-        return Created($"https://localhost:5003/visit/get/{visit.VisitID}", addedVisit);
+        return Created($"https://localhost:5003/visit/get/{visit.VisitID}", visitData);
     }
 
     [HttpPatch]

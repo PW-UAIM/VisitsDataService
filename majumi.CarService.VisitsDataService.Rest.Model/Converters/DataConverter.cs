@@ -33,20 +33,4 @@ public static class DataConverter
 
         return visitData;
     }
-
-    public static Visit ConvertToVisit(this VisitData visitData)
-    {
-        return new Visit
-        {
-            VisitID = visitData.VisitID,
-            ClientID = visitData.ClientID,
-            ServiceType = visitData.ServiceType,
-            ServiceDate = visitData.ServiceDate,
-            ServiceCost = visitData.ServiceCost,
-            ServiceStatus = visitData.ServiceStatus,
-            Notes = visitData.Notes,
-            MechanicID = visitData.MechanicID,
-            CarID = visitData.CarID
-        };
-    }
 }
