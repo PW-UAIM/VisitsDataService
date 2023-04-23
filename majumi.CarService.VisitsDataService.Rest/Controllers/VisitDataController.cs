@@ -24,7 +24,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpGet]
-    [Route("/visit/{id:int}")]
+    [Route("/getVisit/{id:int}")]
     public ActionResult<VisitData> GetVisitById(int id)
     {
         Visit? visit = visitCollection.GetVisitById(id);
@@ -36,8 +36,8 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpGet]
-    [Route("/visit/client/{id:int}")]
-    public ActionResult<List<VisitData>> GetVisitByClient(int id)
+    [Route("/getAllVisitsByClient/{id:int}")]
+    public ActionResult<List<VisitData>> GetVisitsByClient(int id)
     {
         List<Visit>? visits = visitCollection.GetVisitsByClient(id);
         List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
@@ -46,8 +46,8 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpGet]
-    [Route("/visit/mechanic/{id:int}")]
-    public ActionResult<List<VisitData>> GetVisitByMechanic(int id)
+    [Route("/getAllVisitsByMechanic/{id:int}")]
+    public ActionResult<List<VisitData>> GetVisitsByMechanic(int id)
     {
         List<Visit>? visits = visitCollection.GetVisitsByMechanic(id);
         List<VisitData> visitData = DataConverter.ConvertToVisitDataList(visits);
@@ -56,7 +56,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpGet]
-    [Route("/visit/all")]
+    [Route("/getAllVisits")]
     public ActionResult<List<VisitData>> GetAllVisits()
     {
         List<Visit> visits = visitCollection.GetAllVisits();
@@ -66,7 +66,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpGet]
-    [Route("/visit/mechanic/{id:int}/date/{year:int}/{month:int}/{day:int}")]
+    [Route("/getAllVisitsByMechanicInDay/{id:int}/{year:int}/{month:int}/{day:int}")]
     public ActionResult<List<VisitData>> GetVisitByMechanicAndDate(int id, int year, int month, int day)
     {
         List<Visit>? visits = visitCollection.GetVisitsByMechanicAndDate(id, year, month, day);
@@ -76,7 +76,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpPost]
-    [Route("/visit/add")]
+    [Route("/addVisit")]
     public ActionResult<VisitData> AddVisit(Visit visit)
     {
         Visit? addedVisit = visitCollection.AddVisit(visit);
@@ -88,7 +88,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpPatch]
-    [Route("/visit/{id:int}/update/{status}")]
+    [Route("/updateVisitStatus/{id:int}/{status}")]
     public ActionResult<VisitData> UpdateVisitStatus(int id, string status)
     {
         Visit? visit = visitCollection.UpdateVisitStatus(id, status);

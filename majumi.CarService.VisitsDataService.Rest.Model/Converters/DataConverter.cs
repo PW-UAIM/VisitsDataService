@@ -26,9 +26,9 @@ public static class DataConverter
     {
         List<VisitData> visitData = new();
 
-        foreach (Visit v in visits)
+        foreach (Visit visit in visits)
         {
-            visitData.Add(ConvertToVisitData(v));
+            visitData.Add(ConvertToVisitData(visit));
         }
 
         return visitData;

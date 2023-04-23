@@ -7,8 +7,8 @@ namespace majumi.CarService.VisitsDataService.Rest.Model.Services;
 public interface IVisitDataService
 {
     public ActionResult<VisitData> GetVisitById(int id);
-    public ActionResult<List<VisitData>> GetVisitByClient(int id);
-    public ActionResult<List<VisitData>> GetVisitByMechanic(int id);
+    public ActionResult<List<VisitData>> GetVisitsByClient(int id);
+    public ActionResult<List<VisitData>> GetVisitsByMechanic(int id);
     public ActionResult<List<VisitData>> GetAllVisits();
     public ActionResult<List<VisitData>> GetVisitByMechanicAndDate(int id, int year, int month, int day);
     public ActionResult<VisitData> AddVisit(Visit visit);
