@@ -84,7 +84,7 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
             return UnprocessableEntity();
         VisitData visitData = DataConverter.ConvertToVisitData(addedVisit);
 
-        return Created($"https://localhost:5003/visit/get/{visit.VisitID}", visitData);
+        return Created($"https://localhost:5003/getVisit/{visit.VisitID}", visitData);
     }
 
     [HttpPatch]

@@ -1,24 +1,24 @@
 echo off
 set url=https://localhost:5003
 
-CALL:curl_test "Istniejaca wizyta o ID 1" GET /visit/1 
-CALL:curl_test "Nieistniejaca wizyta o ID 1024" GET /visit/1024 
+CALL:curl_test "Istniejaca wizyta o ID 1" GET /getVisit/1 
+CALL:curl_test "Nieistniejaca wizyta o ID 1024" GET /getvisit/1024 
 
-CALL:curl_test "Wszystkie wizyty istniejacego klienta o ID 1" GET /visit/client/1
-CALL:curl_test "Wszystkie wizyty nieistniejacego klienta o ID 1024" GET /visit/client/1024
+CALL:curl_test "Wszystkie wizyty istniejacego klienta o ID 1" GET /getAllVisitsByClient/1
+CALL:curl_test "Wszystkie wizyty nieistniejacego klienta o ID 1024" GET /getAllVisitsByClient/1024
 
-CALL:curl_test "Wszystkie wizyty istniejacego mechanika o ID 1" GET /visit/mechanic/1
-CALL:curl_test "Wszystkie wizyty nieistniejacego mechanika o ID 1024" GET /visit/mechanic/1024
+CALL:curl_test "Wszystkie wizyty istniejacego mechanika o ID 1" GET /getAllVisitsByMechanic/1
+CALL:curl_test "Wszystkie wizyty nieistniejacego mechanika o ID 1024" GET /getAllVisitsByMechanic/1024
 
-CALL:curl_test "Wszystkie wizyty mechanika o ID 1 w dniu 01.03.2022" GET /visit/mechanic/1/date/2022/3/1
+CALL:curl_test "Wszystkie wizyty mechanika o ID 1 w dniu 01.03.2022" GET /getAllVisitsByMechanicInDay/1/2022/3/1
 
-CALL:curl_test "Wizyta o ID 1 przed zmiana" GET /visit/1 
-CALL:curl_test "Zmien status wizyty o ID 1 na 'Trwa' " PATCH /visit/1/update/Trwa
-CALL:curl_test "Wizyta o ID 1 po zmianie" GET /visit/1 
+CALL:curl_test "Wizyta o ID 1 przed zmiana" GET /getVisit/1
+CALL:curl_test "Zmien status wizyty o ID 1 na 'Trwa' " PATCH /updateVisitStatus/1/Trwa
+CALL:curl_test "Wizyta o ID 1 po zmianie" GET /getVisit/1
 
 echo Nazwa testu: "Dodaj wizyte"
-echo Testowany url: https://localhost:5003/visit/add
-curl -X POST https://localhost:5003/visit/add -H "Content-Type: application/json"  -d ^
+echo Testowany url: https://localhost:5003/addVisit
+curl -X POST https://localhost:5003/addVisit -H "Content-Type: application/json"  -d ^
 "{^
 	\"clientID\": 1,^
 	\"carID\": 3,^
@@ -31,7 +31,7 @@ curl -X POST https://localhost:5003/visit/add -H "Content-Type: application/json
 }"
 echo:
 echo:
-CALL:curl_test "Dane wszystkich wizyty" GET /visit/all
+CALL:curl_test "Dane wszystkich wizyty" GET /getAllVisits
 
 EXIT /B 0
 
