@@ -7,7 +7,7 @@ public interface IVisitCollection
     public List<Visit> GetAllVisits();
     public List<Visit> GetVisitsByMechanic(int mechanicID);
     public List<Visit> GetVisitsByMechanicAndDate(int mechanicID, int year, int month, int day);
-    public Visit? UpdateVisitStatus(int visitID, string newStatus);
+    public Visit? UpdateVisitStatus(int visitID, int mechanicID, string newStatus, int serviceCost);
     public Visit? AddVisit(Visit visitData);
 }
 

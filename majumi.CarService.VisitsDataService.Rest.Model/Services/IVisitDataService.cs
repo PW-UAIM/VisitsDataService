@@ -12,5 +12,5 @@ public interface IVisitDataService
     public ActionResult<List<VisitData>> GetAllVisits();
     public ActionResult<List<VisitData>> GetVisitByMechanicAndDate(int id, int year, int month, int day);
     public ActionResult<VisitData> AddVisit(Visit visit);
-    public ActionResult<VisitData> UpdateVisitStatus(int id, string status);
+    public ActionResult<VisitData> UpdateVisitStatus(int id, int mechanicid, string status, int cost);
 }

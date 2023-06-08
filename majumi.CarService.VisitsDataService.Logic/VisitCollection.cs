@@ -92,7 +92,7 @@ public class VisitCollection  : IVisitCollection
         }
     }
 
-    public Visit? UpdateVisitStatus(int visitID, string newStatus)
+    public Visit? UpdateVisitStatus(int visitID, int mechanicID, string newStatus, int serviceCost)
     {
         lock (VisitLock)
         {
@@ -100,7 +100,9 @@ public class VisitCollection  : IVisitCollection
             {
                 if (visit.VisitID == visitID)
                 {
+                    visit.MechanicID = mechanicID;
                     visit.ServiceStatus = newStatus;
+                    visit.ServiceCost = serviceCost;
                     return visit;
                 }
             }

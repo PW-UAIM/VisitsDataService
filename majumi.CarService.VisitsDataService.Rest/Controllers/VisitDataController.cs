@@ -88,10 +88,10 @@ public class VisitDataController : ControllerBase, IVisitDataService, ITestsServ
     }
 
     [HttpPatch]
-    [Route("/updateVisitStatus/{id:int}/{status}")]
-    public ActionResult<VisitData> UpdateVisitStatus(int id, string status)
+    [Route("/updateVisitStatus/{id:int}/{mechanicid:int}/{status}/{cost:int}")]
+    public ActionResult<VisitData> UpdateVisitStatus(int id, int mechanicid, string status, int cost)
     {
-        Visit? visit = visitCollection.UpdateVisitStatus(id, status);
+        Visit? visit = visitCollection.UpdateVisitStatus(id, mechanicid, status, cost);
         if (visit == null)
             return NotFound();
         
